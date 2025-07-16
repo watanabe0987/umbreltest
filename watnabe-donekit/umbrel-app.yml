@@ -12,18 +12,18 @@ description: >-
 
   You can also add newlines!
 
-developer: Umbrel
-website: https://umbrel.com
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+developer: you know it
+website: https://donetick.com/
+submitter: doneticked it
+submission: https://github.com/donetick/donetick
+repo: https://github.com/donetick/donetick
+support: https://github.com/donetick/donetick
 gallery:
   - https://github.com/donetick/donetick/blob/main/assets/screenshot.png
   #- https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg#
+  #- https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
-  Add what's new in the latest version of your app here.
+  Don't know don't care
 dependencies: []
 path: ""
 defaultUsername: ""
