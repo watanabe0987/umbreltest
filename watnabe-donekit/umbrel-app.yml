@@ -2,10 +2,10 @@ manifestVersion: 1
 id: watanabe-donetick
 name: donetick
 tagline: chilrens do your chores
-icon: https://github.com/donetick/donetick/blob/main/assets/icon.png
+icon: https://raw.githubusercontent.com/donetick/donetick/7a20bc26f9348e457d60f705efa3d0e14828d0a5/assets/logo.svg
 category: Family
 version: "0.1.51"
-port: 4000
+port: 4555
 description: >-
   gamefy the chores
 
@@ -23,7 +23,7 @@ gallery:
   #- https://i.imgur.com/yyVG0Jb.jpeg
   #- https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
-  Don't know don't care
+  
 dependencies: []
 path: ""
 defaultUsername: ""
