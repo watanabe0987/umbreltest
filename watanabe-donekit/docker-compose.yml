@@ -2,11 +2,11 @@ services:
   donetick:
     image: donetick/donetick:latest
     container_name: donetick
-    restart: always
+    restart: unless-stopped
     ports:
-      - 8085:4555
+      - 8133:8133
     volumes:
-      - ./data:/donetick-data
+      - ./donetick_data:/donetick-data
       - ./config:/config
     environment:
       - DT_ENV=selfhosted
