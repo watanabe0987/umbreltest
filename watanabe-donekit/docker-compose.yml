@@ -2,9 +2,9 @@ services:
   donetick:
     image: donetick/donetick:latest
     container_name: donetick
-    restart: unless-stopped
+    restart: always
     ports:
-      - 2021:2021
+      - 8085:8000
     volumes:
       - ./data:/donetick-data
       - ./config:/config
