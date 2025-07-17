@@ -20,7 +20,7 @@ repo: https://github.com/donetick/donetick
 support: https://github.com/donetick/donetick
 gallery:
   - https://github.com/donetick/donetick/blob/main/assets/screenshot.png
-  #- https://i.imgur.com/yyVG0Jb.jpeg
+  - https://github.com/donetick/donetick/blob/main/assets/screenshot.png?raw=true
   #- https://i.imgur.com/yyVG0Jb.jpeg
 releaseNotes: >-
   
