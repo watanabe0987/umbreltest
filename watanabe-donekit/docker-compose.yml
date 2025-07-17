@@ -1,6 +1,6 @@
 services:
   donetick:
-    image: donetick/donetick
+    image: donetick/donetick:latest
     container_name: donetick
     restart: unless-stopped
     ports:
