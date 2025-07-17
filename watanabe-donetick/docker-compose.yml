@@ -1,15 +1,14 @@
 services:
   donetick:
-    image: >-  
-      donetick/donetick:latest
+    image: donetick/donetick:latest
     container_name: donetick
     restart: unless-stopped
     ports:
-      - 8133:8133
+      - 2021:2021
     volumes:
-      - ./donetick_data:/donetick-data
-      - ./config:/config
+      - ./data:/app/data
+      - ./config:/app/config
     environment:
       - DT_ENV=selfhosted
-      - DT_SQLITE_PATH=/donetick-data/donetick.db
+      - DT_SQLITE_PATH=/app/data/donetick.db
       
