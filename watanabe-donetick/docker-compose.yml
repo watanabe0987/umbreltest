@@ -4,11 +4,11 @@ services:
     container_name: donetick
     restart: unless-stopped
     ports:
-      - 2021:2021
+      - '2021:2021'
     volumes:
-      - ./data:/app/data
-      - ./config:/app/config
+      - ${APP_DATA_DIR}/data:/app/data
+      - ${APP_DATA_DIR}/config:/app/config
     environment:
       - DT_ENV=selfhosted
       - DT_SQLITE_PATH=/app/data/donetick.db
-      
+      - DT_JWT_SECRET="5q_kmeGfK6EghED1JogHxbYhp-BGyk7tTCCbGQF_Erw="
