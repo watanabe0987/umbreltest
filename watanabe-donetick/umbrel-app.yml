@@ -5,12 +5,9 @@ tagline: chilrens do your chores
 icon: https://raw.githubusercontent.com/donetick/donetick/7a20bc26f9348e457d60f705efa3d0e14828d0a5/assets/logo.svg
 category: Family
 version: "0.1.51"
-port: 4555
+port: 2021
 description: >-
   gamefy the chores
-
-
-  You can also add newlines!
 
 developer: you know it
 website: https://donetick.com/
