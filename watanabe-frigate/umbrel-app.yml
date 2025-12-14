@@ -1,7 +1,7 @@
 manifestVersion: 1
 id: frigate
 category: automation
-name: Frigate
+name: Frigate-custom
 version: "0.16.3"
 tagline: A complete and local NVR
 description: >-
