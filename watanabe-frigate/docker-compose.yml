@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: frigate_web_1
+      APP_PORT: 5000
+      PROXY_AUTH_ADD: 'false'
+    container_name: frigate_app_proxy_1
+    devices:
+      - /dev/dri
+      - /dev/kfd
+  web:
+    privileged: true
+    restart: on-failure
+    image: >-
+      ghcr.io/blakeblackshear/frigate:stable-rocm@sha256:cf4305d9f1c673d71c4d0fab30ca56ca05ac91168711a74ee7867a4691a7ad02
+    shm_size: 256mb
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/home:/media/frigate
+    ports:
+      - '8554:8554'
+      - 8555:8555/tcp
+      - 8555:8555/udp
+    environment:
+      FRIGATE_RTSP_PASSWORD: ${APP_PASSWORD}
+    container_name: frigate_web_1
+    devices:
+      - /dev/dri
+      - /dev/kfd
