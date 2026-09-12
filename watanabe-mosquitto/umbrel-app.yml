@@ -1,0 +1,37 @@
+manifestVersion: 1
+id: watanabe-mosquitto
+name: Mosquitto MQTT Broker
+tagline: Lightweight MQTT message broker for local automations
+icon: https://cdn.simpleicons.org/eclipsemosquitto/3C5280
+category: automation
+version: "2.1.2"
+port: 1883
+description: >-
+  Eclipse Mosquitto is a lightweight MQTT broker. MQTT is the message bus
+  that lets self-hosted apps talk to each other - for example Frigate
+  publishing camera detections and Home Assistant subscribing to them.
+
+
+  On first start this app generates a random username and password. The
+  credentials are stored in the app's data directory as mosquitto-credentials.txt
+  and printed in the container logs. Use them when configuring other apps
+  to connect to this broker on port 1883.
+
+
+  The broker listens on the local network (port 1883, unencrypted MQTT -
+  keep it inside your LAN). Authentication is required for all connections.
+developer: Eclipse Foundation
+website: https://mosquitto.org/
+submitter: watanabe0987
+submission: https://github.com/watanabe0987/umbreltest
+repo: https://github.com/eclipse/mosquitto
+support: https://github.com/watanabe0987/umbreltest/issues
+gallery:
+  - https://mqtt.org/assets/img/mqtt-logo.svg
+releaseNotes: >-
+  Initial release: Mosquitto 2.1.2 with authentication required,
+  credentials auto-generated on first start.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

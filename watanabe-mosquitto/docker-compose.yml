@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  web:
+    image: eclipse-mosquitto:2.1.2-alpine
+    container_name: watanabe-mosquitto_web_1
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ${APP_DATA_DIR}/data/mosquitto/config:/mosquitto/config
+      - ${APP_DATA_DIR}/data/mosquitto/data:/mosquitto/data
+      - ${APP_DATA_DIR}/data/mosquitto/log:/mosquitto/log
+      - ${APP_DATA_DIR}/credentials:/credentials
+    entrypoint:
+      - /bin/sh
+      - -ec
+      - |
+        CONF_DIR=/mosquitto/config
+        PW_FILE=$$CONF_DIR/passwd
+        CRED_FILE=/credentials/mosquitto-credentials.txt
+        mkdir -p $$CONF_DIR /mosquitto/data /mosquitto/log /credentials
+        if [ ! -f "$$PW_FILE" ]; then
+          echo "First start: generating MQTT credentials..."
+          MQTT_USER="umbrel-mqtt"
+          MQTT_PASS="$$(head -c 24 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | head -c 24)"
+          mosquitto_passwd -b -c "$$PW_FILE" "$$MQTT_USER" "$$MQTT_PASS"
+          chown mosquitto:mosquitto "$$PW_FILE"
+          chmod 600 "$$PW_FILE"
+          printf 'Mosquitto MQTT broker credentials (generated %s)\n\n  Host: <this umbrel box IP> (port 1883)\n  Username: %s\n  Password: %s\n\nKeep this file private. Delete it after copying the credentials somewhere safe.\n' "$$(date -u '+%Y-%m-%d %H:%M UTC')" "$$MQTT_USER" "$$MQTT_PASS" > "$$CRED_FILE"
+          chmod 600 "$$CRED_FILE"
+          echo "Credentials generated. See mosquitto-credentials.txt in the app data dir."
+          echo "Username: $$MQTT_USER"
+          echo "Password: $$MQTT_PASS"
+        else
+          echo "Existing password file found - reusing credentials."
+        fi
+        printf 'listener 1883 0.0.0.0\nallow_anonymous false\npassword_file /mosquitto/config/passwd\npersistence true\npersistence_location /mosquitto/data/\nlog_dest stdout\nconnection_messages true\n' > "$$CONF_DIR/mosquitto.conf"
+        chown -R mosquitto:mosquitto /mosquitto/data /mosquitto/log
+        echo "Starting mosquitto..."
+        exec /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf
+    environment:
+      - TZ=UTC
+    init: true
