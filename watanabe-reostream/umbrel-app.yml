@@ -1,0 +1,34 @@
+manifestVersion: 1
+id: watanabe-reostream
+name: Reostream
+tagline: Reliable Reolink video for Frigate, over Reolink's own protocol
+icon: https://raw.githubusercontent.com/watanabe0987/umbreltest/main/watanabe-reostream/icon.svg
+category: automation
+version: "0.1.5"
+port: 8562
+description: >-
+  reostream pulls video from Reolink cameras over Reolink's own Baichuan
+  protocol (the one the Reolink app and NVR use) and serves it as standard
+  RTSP for Frigate. Use it when Reolink's built-in RTSP server drops or
+  freezes frames. Frigate keeps doing all detection and recording.
+
+
+  SET-UP: after install, get the one-time claim token from the app container
+  log, open the app page, paste the token, set the operator password, then add
+  each camera (IP, admin, camera password). Streams are then served at
+  rtsp://<umbrel-host>:8561/<camera> and http://<umbrel-host>:8560/<camera>.ts.
+developer: Riley Poe (VoltTech21)
+website: https://github.com/VoltTech21/reostream
+repo: https://github.com/VoltTech21/reostream
+support: https://github.com/VoltTech21/reostream/issues
+submitter: watanabe0987
+submission: https://github.com/watanabe0987/umbreltest
+gallery:
+  - https://raw.githubusercontent.com/VoltTech21/reostream/main/docs/images/status.png
+  - https://raw.githubusercontent.com/VoltTech21/reostream/main/docs/images/camera.png
+releaseNotes: >-
+  reostream v0.1.5 (upstream tag), first Umbrel packaging.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
