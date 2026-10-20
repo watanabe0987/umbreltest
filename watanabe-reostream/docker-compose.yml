@@ -8,7 +8,7 @@ services:
     container_name: watanabe-reostream_app_proxy_1
   web:
     restart: unless-stopped
-    image: ghcr.io/volttech21/reostream:v0.1.5
+    image: ghcr.io/volttech21/reostream:0.1.5
     container_name: watanabe-reostream_web_1
     ports:
       - '8560:8560'
