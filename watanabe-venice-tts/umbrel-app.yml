@@ -1,0 +1,55 @@
+manifestVersion: 1
+id: watanabe-venice-tts
+name: Venice TTS Bridge
+tagline: Neural text-to-speech for Home Assistant via Venice.ai (Wyoming protocol)
+icon: https://venice.ai/apple-touch-icon.png
+category: automation
+version: "0.1.0"
+port: 10300
+description: >-
+  Runs the roryeckel/wyoming_openai Wyoming proxy in front of the Venice.ai
+  OpenAI-compatible speech API, so Home Assistant can use Venice neural voices
+  (xAI voices via tts-xai-v1) for announcements and automations.
+
+
+  Setup:
+
+
+  1. Install the app. On first start it will stop with a clear log message
+     because the API key file does not exist yet.
+
+  2. Create /home/umbrel/umbrel/app-data/watanabe-venice-tts/tts.env with one
+     line: TTS_OPENAI_KEY=YOUR_VENICE_API_KEY (a VENICE_INFERENCE_KEY from
+     venice.ai/dashboard/api-keys works).
+
+  3. Restart the app.
+
+  4. In Home Assistant: Settings > Devices & Services > Add Integration >
+     Wyoming, host = this umbrel box IP, port = 10300.
+
+  5. Use the new TTS entity in automations (tts.speak) instead of the Nabu
+     Casa tts.cloud_say.
+
+
+  Voices available (change via app env config): eve, ara, rex, sal, leo,
+  helios, luna, iris, sirius.
+
+
+  Note: this service depends on venice.ai being reachable from the network.
+  If Venice is down, TTS announcements fail (they are short, low-cost calls).
+developer: Rory Eckel
+website: https://github.com/roryeckel/wyoming_openai
+submitter: watanabe0987
+submission: https://github.com/watanabe0987/umbreltest
+repo: https://github.com/roryeckel/wyoming_openai
+support: https://github.com/watanabe0987/umbreltest/issues
+gallery:
+  - https://venice.ai/apple-touch-icon.png
+releaseNotes: >-
+  Initial release: wyoming_openai 0.8.0 proxying Venice.ai tts-xai-v1 on
+  Wyoming port 10300. Key supplied via tts.env in the app data directory so
+  it survives app updates.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

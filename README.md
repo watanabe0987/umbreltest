@@ -1,3 +1,28 @@
+## Apps in this store
+
+- `watanabe-donetick`, `watanabe-frigate`, `watanabe-hello-world`, `watanabe-mosquitto`, `watanabe-reostream`
+- `watanabe-venice-tts` — Venice TTS Bridge
+
+## Venice TTS Bridge (watanabe-venice-tts)
+
+Wyoming protocol TTS proxy for Home Assistant backed by the Venice.ai speech API
+(`tts-xai-v1`, xAI voices). Built on [roryeckel/wyoming_openai](https://github.com/roryeckel/wyoming_openai) v0.8.0.
+
+**First start stops on purpose** until the API key exists:
+
+```bash
+sudo sh -c 'printf "TTS_OPENAI_KEY=YOUR_VENICE_API_KEY\n" > /home/umbrel/umbrel/app-data/watanabe-venice-tts/tts.env && chmod 600 /home/umbrel/umbrel/app-data/watanabe-venice-tts/tts.env'
+```
+
+Then restart the app. The file lives in the app data directory, so the key
+survives app updates and reinstalls.
+
+**Home Assistant:** Settings → Devices & Services → Add Integration → **Wyoming**,
+host `192.168.0.56`, port `10300`. Announce with `tts.speak` targeting the new
+TTS entity and a Sonos media player.
+
+Voices: `eve ara rex sal leo helios luna iris sirius` (xAI voices via Venice).
+
 ## Umbrel Community App Store Template
 
 This repository is a template to create an Umbrel Community App Store. These additional app stores allow developers to distribute applications without submitting to the [Official Umbrel App Store](https://github.com/getumbrel/umbrel-apps).
