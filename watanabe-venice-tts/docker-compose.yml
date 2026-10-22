@@ -24,10 +24,15 @@ services:
           echo "=========================================================="
           exit 1
         fi
-        set -a
-        . /data/tts.env
-        set +a
-        echo "Venice TTS Bridge: starting wyoming_openai on port 10300"
+        KEY=$$(sed -n 's/^TTS_OPENAI_KEY=//p' /data/tts.env | head -1 | tr -d '"')
+        if [ -z "$$KEY" ]; then
+          echo "Venice TTS Bridge: tts.env exists but has no TTS_OPENAI_KEY= line."
+          echo "The file must contain exactly one line:"
+          echo "  TTS_OPENAI_KEY=YOUR_VENICE_API_KEY"
+          exit 1
+        fi
+        export TTS_OPENAI_KEY="$$KEY"
+        echo "Venice TTS Bridge: key loaded, starting wyoming_openai on port 10300"
         exec python -m wyoming_openai --uri tcp://0.0.0.0:10300 --log-level INFO
     environment:
       - TTS_OPENAI_URL=https://api.venice.ai/api/v1
