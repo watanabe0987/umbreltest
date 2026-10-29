@@ -4,7 +4,7 @@ name: Reostream
 tagline: Reliable Reolink video for Frigate, over Reolink's own protocol
 icon: https://raw.githubusercontent.com/watanabe0987/umbreltest/main/watanabe-reostream/icon.svg
 category: automation
-version: "0.1.5"
+version: "0.2.4"
 port: 8562
 description: >-
   reostream pulls video from Reolink cameras over Reolink's own Baichuan
