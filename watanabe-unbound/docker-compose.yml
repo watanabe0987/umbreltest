@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: watanabe-unbound_web_1
+    image: ghcr.io/klutchell/unbound:1.16.0
+    restart: unless-stopped
+    # image entrypoint is bare `unbound`; -d keeps it in the foreground
+    # so the container does not daemonize-and-exit
+    command: -d
+    volumes:
+      - "${UMBREL_ROOT}/unbound-dot.conf:/etc/unbound/unbound.conf:ro"
+    ports:
+      - "5335:5335/udp"
+      - "5335:5335/tcp"
