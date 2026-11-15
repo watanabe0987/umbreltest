@@ -1,0 +1,21 @@
+manifestVersion: 1
+id: watanabe-unbound
+name: Unbound (DoT)
+tagline: Encrypted DNS forwarding to Quad9 for Pi-hole
+icon: https://nlnetlabs.nl/static/favicon.ico
+category: developer-tools
+version: 1.16.0
+port: 5335
+description: >
+  Unbound validating recursive DNS resolver, running in forwarding mode.
+  Forwards all queries from Pi-hole to Quad9 (9.9.9.11 / 149.112.112.11)
+  over DNS-over-TLS with certificate validation pinned to dns11.quad9.net.
+  Listens on host port 5335 (UDP+TCP). No web UI — it is a background
+  service; Pi-hole's upstream points at <host>:5335. Config lives at
+  /home/umbrel/unbound-dot.conf on the data partition and survives OS updates.
+website: https://nlnetlabs.nl/projects/unbound/about/
+repo: https://github.com/klutchell/unbound-docker
+support: https://github.com/klutchell/unbound-docker/issues
+gallery: []
+releaseNotes: Initial packaged release. Pinned klutchell/unbound 1.16.0.
+permissions: []
