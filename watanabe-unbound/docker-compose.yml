@@ -1,7 +1,8 @@
 services:
   web:
     container_name: watanabe-unbound_web_1
-    image: ghcr.io/klutchell/unbound:1.16.0
+    # pinned by digest = immutable; matches klutchell/unbound:latest (unbound 1.24.x-era build)
+    image: ghcr.io/klutchell/unbound@sha256:50cbeb32b5838a829a7226b19cb151f9535bd7f9f3190f950780f452fe807478
     restart: unless-stopped
     # image entrypoint is bare `unbound`; -d keeps it in the foreground
     # so the container does not daemonize-and-exit
